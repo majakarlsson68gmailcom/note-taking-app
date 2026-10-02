@@ -66,7 +66,7 @@ function createCardElement(note) {
 function renderNotes(notesToRender) {
     grid.replaceChildren();
 
-    notes.forEach(note => {
+    notesToRender.forEach(note => {
        const card = createCardElement(note);
        grid.appendChild(card); 
     });
