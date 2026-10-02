@@ -15,19 +15,20 @@ closeBtn.addEventListener("click", () => {
   noteDialog.close();
 });
 
-// Save button in dialog, get inputvalue
-const saveBtn = document.getElementById("save-btn");
-saveBtn.addEventListener("click", (e) => {
+// lyssnar på button med type submit.
+const noteForm = document.querySelector(".new-note-form")
+noteForm.addEventListener("submit", (e) => {
     e.preventDefault();
   
     const newNote = getNoteData();  // spara objektet i variabeln newNote
     notes.push(newNote);
    
     noteDialog.close();
-    createCardElement(newNote)
+    // createCardElement(newNote)
 
-    titleInput.value = "";
-    contentInput.value = "";
+    // titleInput.value = "";
+    // contentInput.value = "";
+    noteForm.reset();
     renderNotes(notes);
 })
 
@@ -62,7 +63,7 @@ function createCardElement(note) {
 }
 
 // renderar Notes
-function renderNotes(notes) {
+function renderNotes(notesToRender) {
     grid.replaceChildren();
 
     notes.forEach(note => {

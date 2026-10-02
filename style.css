@@ -117,7 +117,7 @@ button.primary:hover, button.primary:focus-visible {
     to { transform: translateX(220%) skewX(-20deg); }
   }
   
-  button {
+  button.secondary {
 
         padding: 0.4rem 0.8rem;
         background-color: var(--color-surface);
@@ -134,7 +134,7 @@ button.primary:hover, button.primary:focus-visible {
     overflow: hidden;
   }
   
-  button::before {
+  button.secondary::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -143,12 +143,12 @@ button.primary:hover, button.primary:focus-visible {
     pointer-events: none;
   }
   
-  button:hover, button:focus-visible {
+  button.secondary:hover, button.secondary:focus-visible {
     background-color: #E0DDCF;
     color: #2D232E;
   }
 
-  button:hover::before, button:focus-visible::before {
+  button.secondary:hover::before, button.secondary:focus-visible::before {
     animation: hover-shine 0.9s ease;
   }
 
