@@ -1,0 +1,297 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #2D232E;
+    --color-hover: #5d495f;
+    --color-secondary: #534B52;
+    --color-bg: #F1F0EA;
+    --color-surface: #fff;
+    --color-inverted: #E0DDCF;
+    --color-text: #474448;
+
+    --fs-sm: 1.2rem;
+    --fs-md: 1.6rem;
+    --fs-lg: 2.4rem;
+    --fs-xlg: 3.2rem;
+    --fs-display: 4.2rem;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    padding-top: 4rem;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-size: var(--fs-md);
+    font-family: "Outfit", sans-serif;
+}
+
+/* General styles */
+
+h1, h2, h3 {
+    color: var(--color-secondary);
+}
+
+h1 {
+    font-size: var(--fs-display);
+}
+h2 {
+    font-size: var(--fs-xlg);
+    margin-bottom: 3.2rem;
+}
+
+h3 {
+    font-size: var(--fs-lg);
+    margin-bottom: 0.8rem;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+.container {
+    max-width: 1300px;
+    padding: 0 2rem;
+    margin: 0 auto;
+}
+
+/* Components */
+
+input, textarea {
+    padding: 1.2rem 1.6rem;
+    border: #ddd;
+    border-radius: 8px;
+}
+
+input:focus-visible, textarea:focus-visible {
+    outline: 1px solid var(--color-primary);
+    outline-offset: 1px;
+}
+
+/* Buttons */
+
+button.primary {
+    margin-left: auto;
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: var(--color-primary);
+    border: none;
+    color: var(--color-inverted);
+    border-radius: 12px;
+    cursor: pointer;
+
+    svg {
+     fill: var(--color-inverted);
+    }
+
+    transition: transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;;
+}
+
+button.primary:hover, button.primary:focus-visible {
+    box-shadow: 0 0px 30px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.2);
+    background-color: var(--color-hover);
+    color: #ffffff;
+}
+
+@keyframes hover-shine {
+    from { transform: translateX(-120%) skewX(-20deg); }
+    to { transform: translateX(220%) skewX(-20deg); }
+  }
+  
+  button {
+
+        padding: 0.4rem 0.8rem;
+        background-color: var(--color-surface);
+        border: none;
+        /* border: 1px solid var(--color-primary); */
+        color: var(--color-primary);
+        border-radius: 12px;
+        cursor: pointer;
+    
+    transition: 
+      background-color 0.9s ease,
+      color 0.9s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%);
+    transform: translateX(-120%) skewX(-20deg);
+    pointer-events: none;
+  }
+  
+  button:hover, button:focus-visible {
+    background-color: #E0DDCF;
+    color: #2D232E;
+  }
+
+  button:hover::before, button:focus-visible::before {
+    animation: hover-shine 0.9s ease;
+  }
+
+
+/* Header */
+
+.top-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.actions-header {
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;;
+    padding: 2rem;
+    border-radius: 12px;
+    .search-form {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        margin-right: auto;
+        input {
+            flex: 1;
+            max-width: 500px;
+            margin-right: 2rem;
+        }
+
+        label {
+            flex-basis: 100%;
+        }
+    }
+}
+.container.header {
+    display: flex;
+}
+
+.search-btn {
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    border-radius: 12px;
+    cursor: pointer;
+    svg {
+     fill: var(--color-primary);
+    }
+}
+
+/* Note card */
+
+.note-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-inverted);
+    border-radius: 12px;
+
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;;
+
+    padding: 2rem;
+    max-width: 400px;
+    min-width: 320px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    
+}
+
+section.container {
+    margin-top: 5.2rem;
+}
+/* Notes grid */
+.notes-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    justify-items: center;
+}
+
+/* Dialog */
+.new-note-modal {
+    width: 80%;
+    max-width: 800px;
+    padding: 1.2rem 3.2rem 3.2rem 3.2rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: var(--color-surface);
+
+    margin: auto;
+
+    .close-btn {
+        display: block;
+        margin-left: auto;
+        border: none;
+    }
+    .close-icon {
+        display: block;
+        margin-left: auto;
+        fill: var(--color-secondary);
+    }
+
+    input, textarea {
+        background-color: var(--color-bg);
+        border: 1px solid var(--color-inverted);
+    }
+
+    .new-note-form {
+        margin-top: 3rem;
+    }
+    
+    .form-container {
+        label {
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+        input, textarea {
+            width: 100%;
+            margin-bottom: 2.4rem;
+        }
+    }
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+}
+
+/* Desktop */
+
+@media (min-width: 48em) {
+    :root {
+        --fs-sm: 1.2rem;
+        --fs-md: 1.6rem;
+        --fs-lg: 3.2rem;
+        --fs-xlg: 4.2rem;
+        --fs-display: 5.2rem;
+    }
+}
