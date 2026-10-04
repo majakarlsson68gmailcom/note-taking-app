@@ -4,6 +4,7 @@ const noteDialog = document.getElementById("note-dialog"); // dialog
 const grid = document.querySelector(".notes-grid");
 const notes = []; // arrayen som håller mina anteckningar
 
+
 // Open and close dialog
 addBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -24,11 +25,8 @@ noteForm.addEventListener("submit", (e) => {
     notes.push(newNote);
    
     noteDialog.close();
-    // createCardElement(newNote)
-
-    // titleInput.value = "";
-    // contentInput.value = "";
     noteForm.reset();
+    
     renderNotes(notes);
 })
 
@@ -57,9 +55,16 @@ function createCardElement(note) {
     card.querySelector(".note-content").textContent = note.content;
     card.querySelector(".note-date").textContent = note.date;
 
-    return card;
-    // grid.appendChild(card);
+    const deleteBtn = card.querySelector(".delete-btn");
+    deleteBtn.addEventListener("click", () => {
+       const indexToDelete = notes.findIndex(n => n.id === note.id);
+       if (indexToDelete !== -1) {
+        notes.splice(indexToDelete, 1)
+       }
+       renderNotes(notes);
+    });
     
+    return card;    
 }
 
 // renderar Notes
@@ -70,7 +75,5 @@ function renderNotes(notesToRender) {
        const card = createCardElement(note);
        grid.appendChild(card); 
     });
-    
-    
 }
 
