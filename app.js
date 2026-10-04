@@ -48,7 +48,7 @@ function getNoteData(){
 }
 
 // Skapa html elementet
-function createCardElement(note) {
+function createCardElement(note, onDelete) {
     const cardTemplate = document.getElementById("card-template");
     const card = cardTemplate.content.cloneNode(true); 
     card.querySelector(".card-title").textContent = note.title;
@@ -57,13 +57,8 @@ function createCardElement(note) {
 
     const deleteBtn = card.querySelector(".delete-btn");
     deleteBtn.addEventListener("click", () => {
-       const indexToDelete = notes.findIndex(n => n.id === note.id);
-       if (indexToDelete !== -1) {
-        notes.splice(indexToDelete, 1)
-       }
-       renderNotes(notes);
+        onDelete(note);
     });
-    
     return card;    
 }
 
@@ -72,8 +67,15 @@ function renderNotes(notesToRender) {
     grid.replaceChildren();
 
     notesToRender.forEach(note => {
-       const card = createCardElement(note);
+       const card = createCardElement(note, deleteNote);
        grid.appendChild(card); 
     });
 }
 
+function deleteNote(note) {
+    const indexToDelete = notes.findIndex(n => n.id === note.id);
+    if (indexToDelete !== -1) {
+     notes.splice(indexToDelete, 1)
+    }
+    renderNotes(notes);
+}
