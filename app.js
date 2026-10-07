@@ -93,25 +93,30 @@ function deleteNote(note) {
      notes.splice(indexToDelete, 1)
     }
     storeNotes(notes); // Spara den uppdaterade arrayen i localStorage
-    renderNotes(notes); // Måste rendera rätt array utifrån om användaren faktiskt sökt och sedan tagit bort något
+    // renderNotes(notes); // Måste rendera rätt array utifrån om användaren faktiskt sökt och sedan tagit bort något
+    filterByName()
 }
 
 
 
 // Filter funktionalitet
-function filterByName(e) {
-    const searchTerm = e.target.value;
-
-    notes.forEach(function(item) {
-        if(item.title.includes(searchTerm)) {
-            // Do nothing
-        } else {
-            item.style.display = "none"
-        }
-    })
+function filterByName() {
+    // const searchTerm = e.target.value.toLowerCase();
+    const searchTerm = getSearchValue();
     console.log(searchTerm)
+
+    // Filter returnerar varje note som uppfyller callbackens krav som körs för varje element i notes arrayen
+    const filteredNotes = notes.filter(note => note.title.toLowerCase().includes(searchTerm))
+    renderNotes(filteredNotes);
 }
 
-searchInput.addEventListener("keyup", (e) => {
-    filterByName(e);
+// Hämta värdet från sökfältet och returnera dess värde
+function getSearchValue(){
+    return searchInput.value.toLowerCase();
+}
+
+
+
+searchInput.addEventListener("keyup", () => {
+    filterByName();
 })
