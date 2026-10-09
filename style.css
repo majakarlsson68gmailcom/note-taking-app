@@ -20,6 +20,16 @@
     --fs-display: 4.2rem;
 }
 
+:root.dark {
+    --color-primary: #D9C7DB;
+    --color-hover: #F0E4F1;
+    --color-secondary: #B8AEB7;
+    --color-bg: #1A151B;
+    --color-surface: #2D232E;
+    --color-inverted: #2D232E;
+    --color-text: #E0DDCF;
+}
+
 html {
     font-size: 62.5%;
 }

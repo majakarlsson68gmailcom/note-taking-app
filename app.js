@@ -7,6 +7,7 @@ const grid = document.querySelector(".notes-grid");
 const STORAGE_KEY = "notes";
 const notes = getNotes(); // hämtar arrayen från localstorage
 let editingNoteId = null; // Variabel som håller koll på vilket id som redigeras
+const darkmodeToggle = document.getElementById("toggle-darkmode");
 
 renderNotes(notes);
 
@@ -29,7 +30,7 @@ addBtn.addEventListener("click", (e) => {
 
 noteDialog.addEventListener("close", () => {
     noteForm.reset();
-    editingNoteId = null;
+    editingNoteId = null; // Nollställer editingNoteId -> inte pekar på samma id som klickats
 })
 
 // Close dialog
@@ -49,10 +50,8 @@ noteForm.addEventListener("submit", (e) => {
         noteToEdit.title = titleInput.value;
         noteToEdit.content = contentInput.value;
         storeNotes(notes);
-        editingNoteId = null; // Nollställer editingNoteId -> inte pekar på samma id som klickats
         noteDialog.close();
-        noteForm.reset();
-        
+       
         renderFilteredNotes();
 
     } else {
@@ -158,3 +157,8 @@ searchInput.addEventListener("input", () => {
 function setEditNoteId(note){
     editingNoteId = note.id;
 }
+
+// Darkmode
+darkmodeToggle.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+})
