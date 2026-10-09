@@ -1,7 +1,8 @@
 
 const addBtn = document.getElementById("add-note-btn"); // Add button
 const noteDialog = document.getElementById("note-dialog"); // dialog
-const searchInput = document.getElementById("search-notes");
+const searchInput = document.getElementById("search-notes"); // Sökfältet
+const searchForm = document.querySelector(".search-form");
 const grid = document.querySelector(".notes-grid");
 const STORAGE_KEY = "notes";
 const notes = getNotes(); // hämtar arrayen från localstorage
@@ -101,7 +102,7 @@ function deleteNote(note) {
 
 // Filter funktionalitet
 function filterByName() {
-    // const searchTerm = e.target.value.toLowerCase();
+  
     const searchTerm = getSearchValue();
     console.log(searchTerm)
 
@@ -115,8 +116,12 @@ function getSearchValue(){
     return searchInput.value.toLowerCase();
 }
 
+searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-
-searchInput.addEventListener("keyup", () => {
     filterByName();
+    
+})
+searchInput.addEventListener("input", () => {
+       filterByName();
 })
