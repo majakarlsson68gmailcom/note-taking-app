@@ -1,26 +1,17 @@
-
+import "./darkmode.js"
+import { getNotes, storeNotes } from "./storage.js";
 const addBtn = document.getElementById("add-note-btn"); // Add button
 const noteDialog = document.getElementById("note-dialog"); // dialog
 const searchInput = document.getElementById("search-notes"); // Sökfältet
 const searchForm = document.querySelector(".search-form");
 const grid = document.querySelector(".notes-grid");
-const STORAGE_KEY = "notes";
+
 const notes = getNotes(); // hämtar arrayen från localstorage
 let editingNoteId = null; // Variabel som håller koll på vilket id som redigeras
-const darkmodeToggle = document.getElementById("toggle-darkmode");
+
+
 
 renderNotes(notes);
-
-// tar emot en array, returnerar inget och sparar den i local storage. Den rör inte arrayen
-function storeNotes(array) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(array))
-}
-
-// Funktionen tar inte emot något, den returnerar en array eller tom array från localStorage, den rör inte arrayen
-function getNotes(){
-    const noteData = localStorage.getItem(STORAGE_KEY);
-    return noteData !== null ? JSON.parse(noteData) : [];
-}
 
 // Open dialog
 addBtn.addEventListener("click", (e) => {
@@ -157,8 +148,3 @@ searchInput.addEventListener("input", () => {
 function setEditNoteId(note){
     editingNoteId = note.id;
 }
-
-// Darkmode
-darkmodeToggle.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark");
-})
