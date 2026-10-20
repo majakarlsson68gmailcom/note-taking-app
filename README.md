@@ -1,6 +1,7 @@
 # Notes
 
 A simple note-taking app built with plain HTML, CSS and JavaScript. You can create, edit, search and delete notes. Notes are saved in the browser with `localStorage`, so they are still there when you reload the page.
+See live preview: https://majakarlsson68gmailcom.github.io/note-taking-app/
 
 ## Features
 
@@ -27,7 +28,7 @@ The app uses ES modules, so it needs to be served over HTTP. Opening `index.html
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone (https://github.com/majakarlsson68gmailcom/note-taking-app/edit/main/README.md)
    cd note-taking-app
    ```
 2. Start a local server, for example:
